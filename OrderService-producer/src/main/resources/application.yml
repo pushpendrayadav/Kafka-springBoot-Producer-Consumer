@@ -1,11 +1,14 @@
+# Server configuration
 server:
-  port: 8082
+  port: 8082 # Port on which the OrderService runs
 
 spring:
   application:
-    name: order-service
+    name: order-service # Application name (used in logs and discovery)
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:9092 # Kafka broker address
     producer:
+      # Serializer for the message key (orderId is a String)
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # Serializer for the message value (OrderEvent object → JSON)
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

@@ -1,16 +1,21 @@
+# Server configuration
 server:
-  port: 8084
+  port: 8084 # Port on which the NotificationService runs
 
 spring:
   application:
-    name: notification-service
+    name: notification-service # Application name (used in logs and discovery)
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:9092 # Kafka broker address
     consumer:
-      group-id: notification-group
-      auto-offset-reset: earliest
+      group-id: notification-group # Consumer group ID (all instances share this group)
+      auto-offset-reset: earliest # Start reading from the earliest offset if no committed offset exists
+      # Deserializer for the message key (orderId is a String)
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # Deserializer for the message value (JSON → OrderEvent object)
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
+        # Trust all packages for JSON deserialization
         spring.json.trusted.packages: "*"
+        # Map the producer's class name to the consumer's class for deserialization
         spring.json.type.mapping: "com.ps.producer.dto.OrderEvent:com.ps.consumer.dto.OrderEvent"

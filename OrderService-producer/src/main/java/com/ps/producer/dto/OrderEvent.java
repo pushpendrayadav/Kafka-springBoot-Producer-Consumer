@@ -1,16 +1,22 @@
 package com.ps.producer.dto;
 
+/**
+ * Data Transfer Object representing an Order Event.
+ * This object is serialized to JSON and sent to the Kafka "orders" topic.
+ */
 public class OrderEvent {
 
-    private String orderId;
-    private String productName;
-    private int quantity;
-    private double price;
-    private String status;
+    private String orderId;       // Unique identifier for the order (auto-generated UUID)
+    private String productName;   // Name of the product being ordered
+    private int quantity;         // Number of units ordered
+    private double price;         // Price per unit of the product
+    private String status;        // Current status of the order (e.g., CREATED)
 
+    // Default no-arg constructor (required for JSON deserialization)
     public OrderEvent() {
     }
 
+    // Parameterized constructor to create an OrderEvent with all fields
     public OrderEvent(String orderId, String productName, int quantity, double price, String status) {
         this.orderId = orderId;
         this.productName = productName;

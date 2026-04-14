@@ -1,0 +1,36 @@
+# Compiled class files
+*.class
+
+# Maven build output
+target/
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+.factorypath
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar

@@ -1,0 +1,17 @@
+# ============================================================
+# Load Test Producer Application Configuration
+# ============================================================
+# This app exposes multiple endpoints, each using a different
+# Kafka producer strategy (ack mode). The KafkaTemplate beans
+# are created programmatically in KafkaProducerConfig.java,
+# so we only set the bootstrap-servers here.
+# ============================================================
+
+server:
+  port: 8090 # Separate port so it can run alongside OrderService
+
+spring:
+  application:
+    name: order-producer-load-test-app
+  kafka:
+    bootstrap-servers: localhost:9092 # Kafka broker address
